@@ -4,3 +4,5 @@
 *pyc
 media
 *.env
+*.db.sqlite3
+
