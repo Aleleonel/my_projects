@@ -136,3 +136,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     'statics',
 ]
+
+ 
+#amazon key ID da chave de acesso AKIAIFCWKX3WHCZPKK6A 
+#Amazon key Chave de acesso secreta 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
