@@ -11,9 +11,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-from decouple import config
-from dj_database_url import parse as dburl 
 
+from dj_database_url import parse as dburl, config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,13 +22,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = 'asdfghjkloiuytrrewq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+# DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = True
 
-ALLOWED_HOSTS = ['gestao-clietes.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['gestao-clietes.herokuapp.com','127.0.0.1']
 
+INTERNAL_IPS = ['127.0.0.1']
 
 # Application definition
 
@@ -40,9 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bootstrapform',
+    'crispy_forms',
     'clientes',
+    'produtos',
+    'vendas',
     'home',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -53,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'gestao_clientes.urls'
@@ -73,7 +79,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'gestao_clientes.wsgi.application'
+#WSGI_APPLICATION = 'gestao_clientes.wsgi.application'
 
 
 # Database
@@ -83,7 +89,7 @@ WSGI_APPLICATION = 'gestao_clientes.wsgi.application'
 default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'dbsqlite3')
 
 DATABASES = {
-    'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
+    'default': config('DATABASE_URL', default=default_dburl),
     }
 
 

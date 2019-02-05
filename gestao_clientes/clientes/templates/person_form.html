@@ -1,7 +1,7 @@
 
 {% extends 'base.html' %}
 
-{% load bootstrap %}
+{% load crispy_forms_tags %}
 
 {% block title %}teste{% endblock %}
 
@@ -10,8 +10,12 @@
 
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form|bootstrap }}
+        {{ form | crispy }}
         <button type="submit" class="btn btn-primary">Salvar</button>
     </form>   
   
+{% endblock %}
+
+{% block footer %}
+    {% include 'clientes/footer.html' %}
 {% endblock %}

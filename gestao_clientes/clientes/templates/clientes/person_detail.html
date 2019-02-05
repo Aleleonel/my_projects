@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes</title>
+</head>
+<body>
+
+<h1>Detalhes do Cliente</h1>
+
+Nome : {{ object.first_name }}<br>
+Sobrenome: {{ object.last_name }}<br>
+Documento: {{ object.doc }}<br>
+
+<h2>Detalhe da Venda</h2>
+
+
+<ul>
+    {% for venda in vendas %}
+        <li> Venda id: {{ venda.id}}</li>
+        {% for produto in venda.products.all %}
+            {{ produto.id }} -
+        {% endfor %}
+    {% endfor %}
+
+</ul>
+
+Date: {{ now | date }}
+
+<a href="{% url 'person_update_cbv' object.id %}">Update</a>
+<a href="{% url 'person_delete_cbv' object.id %}">Delete</a>
+
+</body>
+</html>

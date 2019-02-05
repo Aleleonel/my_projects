@@ -1,6 +1,9 @@
 
 {% extends 'base.html' %}
-{% load bootstrap %}
+
+{% load my_tags %}
+
+{% load crispy_forms_tags %}
 
 {% block title %} Administração{% endblock %}
 
@@ -31,12 +34,20 @@
             <h3>Listagem de Clientes</h3>
             <ul class="list-group">
                 {% for person in persons %}
-                    <li "list-group-item">
-                        <a href="{% url 'persons_update' person.id %}">{{ person.first_name }} {{ person.last_name }} {{ person.age}} <p>Num. doc: {{ person.doc }}</p></a>
+                    <li class="list-group-item">
+                        <a href="{% url 'persons_update' person.id %}">
+                            {{ person.nome_completo | title}}
+                            {{ person.age}}
+                            <p>Num. doc: {{ person.doc }}</p>
+
+                        </a>
                         <a href="{% url 'persons_delete' person.id %}" class="trash-item">
                             <i class="fas fa-trash-alt" aria-hidden="true"></i>
                         </a>
                     </li>
+
+                {% empty %}
+                    <li> Desculpe, Cliente não cadastrado </li>
                 {% endfor %}
             </ul>
         <br>
@@ -57,12 +68,11 @@
         </div>
 
     </div>
+
+
+
 {% endblock %}
 
 {% block footer %}
-  <footer class="footer">
-    <div class="container">
-        <span class="text-muted">Desenvolvimento WEB com Django 2.x.</span>
-    </div>
-  </footer>
+    {% include 'clientes/footer.html' %}
 {% endblock %}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Lista de Pessoas</h1>
+
+    <ul>
+    {% for person in object_list %}
+        <li>
+            <a href="{% url 'person_detail_cbv' person.pk %}">{{ person }}</a>
+        </li>
+    {% endfor %}
+    </ul><br>
+
+    <a href="{% url 'person_create_cbv' %}">Novo</a>
+
+</body>
+</html>
