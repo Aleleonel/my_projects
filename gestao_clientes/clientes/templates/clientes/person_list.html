@@ -6,6 +6,9 @@
 </head>
 <body>
 <h1>Lista de Pessoas</h1>
+<br>
+
+    <p>{{ message }}</p>
 
     <ul>
     {% for person in object_list %}
@@ -13,7 +16,8 @@
             <a href="{% url 'person_detail_cbv' person.pk %}">{{ person }}</a>
         </li>
     {% endfor %}
-    </ul><br>
+    </ul>
+    <br>
 
     <a href="{% url 'person_create_cbv' %}">Novo</a>
 

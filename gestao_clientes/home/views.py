@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from django.contrib.auth import logout
 from django.views.generic.base import TemplateView
 from django.http import HttpResponse
@@ -29,7 +29,9 @@ class HomePageViews(TemplateView):
 class MyView(View):
 
     def get(self, request, *args, **kwargs):
-        return render(request, 'home3.html')
+        response = render_to_response('home/home3.html')
+        response.set_cookie('color', 'blue', max_age=1000)
+        return response
 
     def post(self, request, *args, **kwargs):
         return HttpResponse('POST')

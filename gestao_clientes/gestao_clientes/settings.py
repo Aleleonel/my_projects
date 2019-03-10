@@ -59,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'mymiddlewares.MetaData.MetaData',
 ]
 
 ROOT_URLCONF = 'gestao_clientes.urls'
@@ -143,6 +144,11 @@ STATICFILES_DIRS = [
     'statics',
 ]
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'aleleonelcomercial@gmail.com'
+EMAIL_HOST_PASSWORD = '03120808'
+EMAIL_USE_TLS = True
  
 #amazon key ID da chave de acesso AKIAIFCWKX3WHCZPKK6A 
 #Amazon key Chave de acesso secreta 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

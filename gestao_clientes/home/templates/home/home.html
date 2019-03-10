@@ -9,15 +9,17 @@
       
     </div>
     <div class="col-6">
-      <h1>Seja Vem Vindo!</h1>>
+      <h1>Seja Vem Vindo!</h1>
     </div>
 
     <div class="col-sm">
         {% if user.is_authenticated %}
-          <p>Ola {{ user.username }}</p>
-          <a href="{% url 'logout' %}">Sair</a>
+          <p>Ola {{ request.session.message }}</p>
+          <a href="{% url 'logout' %}">Sair</a><br>
+          <a href="{% url 'password_change' %}">Alterar Senha</a>
         {% else %}
           <a href="{% url 'login' %}" class="btn btn-success">Entrar</a>
+
         {% endif %}
     </div>
 </div>
